@@ -374,24 +374,25 @@ const useTransactionStore = create<TransactionStore>()(
               startTimestamp: new Date().getTime(),
               timestamp: undefined,
             });
-
-            if (tx.tx.cosmos && tx.tx.cosmosMsg) {
+        
+            if (tx.tx.type === "COSMOS") {
               const chainContext = useChain("althea");
               const { address } = chainContext;
               const accountInfoData = useAccountInfo(address ?? "");
-
+        
               const explicitSignerData: SignerData = {
                 accountNumber: accountInfoData.data?.account_number,
                 sequence: accountInfoData.data?.sequence,
                 chainId: "althea_258432-1",
               };
-
+        
               const { tx: cosmosTx, transactionHash } = useTx(
                 "althea",
                 explicitSignerData
               );
-
+        
               const { estimateFee } = useFeeEstimation("althea");
+              
               try {
                 const fee = await estimateFee(address ?? "", tx.tx.cosmosMsg);
                 await cosmosTx(tx.tx.cosmosMsg, {
@@ -403,15 +404,15 @@ const useTransactionStore = create<TransactionStore>()(
                 throw error;
               }
               txHash = transactionHash as string;
-            } else {
+            } else if (tx.tx.type === "EVM") {
               // Ethereum transaction signing
-              const { data: txData, error: txError } = await signTransaction(
-                tx.tx
-              );
+              const { data: txData, error: txError } = await signTransaction(tx.tx);
               txHash = txData;
               if (txError) {
                 throw txError;
               }
+            } else {
+              throw new Error("Unsupported transaction type");
             }
             // Set status to PENDING
             let txChain;

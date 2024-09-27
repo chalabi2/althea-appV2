@@ -6,7 +6,7 @@ import { isAddress as checkHex } from "web3-validator";
  * @returns {boolean} if a valid canto address
  */
 export function isValidAltheaAddress(altheaAddress: string): boolean {
-  return altheaAddress.startsWith("althea");
+  return altheaAddress.startsWith("althea") && altheaAddress.length === 44;
 }
 
 /**
