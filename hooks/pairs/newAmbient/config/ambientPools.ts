@@ -4,16 +4,16 @@ import { BaseAmbientPool } from "../interfaces/ambientPools";
 const MAINNET_AMBIENT_POOLS: BaseAmbientPool[] = [
   {
     base: {
-      address: "0x80b5a32E4F032B2a058b4F29EC95EEfEEB87aDcd",
-      chainId: 7700,
+      address: "0x0412C7c846bb6b7DC462CF6B453f76D8440b2609",
+      chainId: 417834,
       decimals: 6,
       logoURI: "/icons/usdc.svg",
       name: "USDC",
       symbol: "USDC",
     },
     quote: {
-      address: "0xEe602429Ef7eCe0a13e4FfE8dBC16e101049504C",
-      chainId: 7700,
+      address: "0x30dA8589BFa1E509A319489E014d384b87815D89",
+      chainId: 417834,
       decimals: 18,
       logoURI: "/icons/cNote.svg",
       name: "Collateral Note",
@@ -22,38 +22,13 @@ const MAINNET_AMBIENT_POOLS: BaseAmbientPool[] = [
     },
     poolIdx: 36000,
     address:
-      "0x80b5a32E4F032B2a058b4F29EC95EEfEEB87aDcd-0xEe602429Ef7eCe0a13e4FfE8dBC16e101049504C",
+      "0x0412C7c846bb6b7DC462CF6B453f76D8440b2609-0x30dA8589BFa1E509A319489E014d384b87815D89",
     symbol: "cNOTE / USDC",
     logoURI: "/icons/cNoteUSDCLP.svg",
     stable: true,
     rewardsLedger: "0x00325777c82C1E3E4B22208Bc1C769f19B2B67Ba",
   },
-  {
-    base: {
-      address: "0x4e71A2E537B7f9D9413D3991D37958c0b5e1e503",
-      chainId: 7700,
-      decimals: 18,
-      logoURI: "/icons/note.svg",
-      name: "Note",
-      symbol: "NOTE",
-    },
-    quote: {
-      address: "0x80b5a32E4F032B2a058b4F29EC95EEfEEB87aDcd",
-      chainId: 7700,
-      decimals: 6,
-      logoURI: "/icons/usdc.svg",
-      name: "USDC",
-      symbol: "USDC",
-    },
-    poolIdx: 36000,
-    address:
-      "0x4e71A2E537B7f9D9413D3991D37958c0b5e1e503-0x80b5a32E4F032B2a058b4F29EC95EEfEEB87aDcd",
-    symbol: "NOTE / USDC",
-    logoURI:
-      "https://raw.githubusercontent.com/Plex-Engineer/public-assets/main/icons/tokens/LP/NoteUSDCLP.svg",
-    stable: true,
-    rewardsLedger: "0x554209512B8d1148eBA7D91cCabf3ea7C790c042",
-  },
+  
 ];
 const TESTNET_AMBIENT_POOLS: BaseAmbientPool[] = [
   {

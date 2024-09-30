@@ -17,7 +17,7 @@ const cantoMainnetBaseInfo = {
   name: "Althea",
   icon: "/althea.svg",
   isTestChain: false,
-  rpcUrl: "https://nodes.chandrastation.com/evm/althea/",
+  rpcUrl: "http://167.99.113.4:8545/",
   nativeCurrency: {
     name: "Althea",
     baseName: "aalthea",
@@ -29,7 +29,7 @@ const cantoMainnetBaseInfo = {
 export const CANTO_MAINNET_EVM: EVMNetwork = {
   ...cantoMainnetBaseInfo,
   id: "althea-mainnet",
-  chainId: 258432,
+  chainId: 417834,
   blockExplorer: {
     url: cantoMainBlockExplorerEVM,
     getAddressLink: getEthAddressLink(cantoMainBlockExplorerEVM),
@@ -41,8 +41,8 @@ export const CANTO_MAINNET_EVM: EVMNetwork = {
 export const CANTO_MAINNET_COSMOS: CosmosNetwork = {
   ...cantoMainnetBaseInfo,
   id: "althea-mainnet",
-  chainId: "althea_258432-1",
-  restEndpoint: "https://nodes.chandrastation.com/api/althea/",
+  chainId: "althea_417834-1",
+  restEndpoint: "http://167.99.113.4:1317/",
   addressPrefix: "althea",
   checkAddress: function (address) {
     return checkCosmosAddress(this.addressPrefix)(address);
@@ -70,7 +70,7 @@ const cantoTestnetBaseInfo = {
 export const CANTO_TESTNET_EVM: EVMNetwork = {
   ...cantoMainnetBaseInfo,
   id: "althea-mainnet",
-  chainId: 258432,
+  chainId: 417834,
   blockExplorer: {
     url: cantoMainBlockExplorerEVM,
     getAddressLink: getEthAddressLink(cantoMainBlockExplorerEVM),
@@ -82,8 +82,8 @@ export const CANTO_TESTNET_EVM: EVMNetwork = {
 export const CANTO_TESTNET_COSMOS: CosmosNetwork = {
   ...cantoMainnetBaseInfo,
   id: "althea-mainnet",
-  chainId: "althea_258432-1",
-  restEndpoint: "https://nodes.chandrastation.com/api/althea/",
+  chainId: "althea_417834-1",
+  restEndpoint: "http://167.99.113.4:1317/",
   addressPrefix: "althea",
   checkAddress: function (address) {
     return checkCosmosAddress(this.addressPrefix)(address);
@@ -96,7 +96,7 @@ export const CANTO_TESTNET_COSMOS: CosmosNetwork = {
 };
 
 export const metamaskChainConfig = {
-  chainId: `0x${parseInt(CANTO_MAINNET_EVM.chainId.toString()).toString(16)}`, // Convert to hex
+  chainId: `0x${parseInt(CANTO_MAINNET_EVM.chainId.toString()).toString(16)}`, 
   chainName: CANTO_MAINNET_EVM.name,
   nativeCurrency: CANTO_MAINNET_EVM.nativeCurrency,
   rpcUrls: [CANTO_MAINNET_EVM.rpcUrl],
@@ -104,10 +104,10 @@ export const metamaskChainConfig = {
 };
 
 export const chainConfig = {
-  chainId: "althea_258432-1",
+  chainId: "althea_417834-1",
   chainName: "Althea",
-  rpc: "https://nodes.chandrastation.com/rpc/althea/",
-  rest: "https://nodes.chandrastation.com/api/althea/",
+  rpc: "http://167.99.113.4:26657/",
+  rest: "http://167.99.113.4:1317/",
 
   bip44: {
     coinType: 118,
