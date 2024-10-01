@@ -26,6 +26,7 @@ import {
 } from "@/config/consts/fees";
 import BigNumber from "bignumber.js";
 import { TX_ERROR_TYPES } from "@/config/consts/errors";
+
 interface StakingModalParams {
   validator: ValidatorWithDelegations | null;
   cantoBalance: string;

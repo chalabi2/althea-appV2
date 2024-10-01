@@ -53,12 +53,12 @@ export default function StakingPage() {
   // if cosmos is connected
   const { address } = useChain("althea");
   const isCosmosWallet = !!address;
-  const userAddress = signer?.account.address || address;
 
   const altheaToEthAddress = altheaToEth(
     address ?? "althea1uwqjtgjhjctjc45ugy7ev5prprhehc7wdlsqmq"
   ) as `0x${string}`;
 
+  const userAddress = signer?.account.address || altheaToEthAddress;
   // staking hook
   const { isLoading, validators, apr, userStaking, selection, transaction } =
     useStaking({
@@ -163,7 +163,8 @@ export default function StakingPage() {
         const newFlow = transaction.newStakingFlow(txParams);
         txStore?.addNewFlow({
           txFlow: newFlow,
-          ethAccount: signer.account.address,
+          ethAccount: userAddress,
+          cosmos: isCosmosWallet,
         });
       }
     }

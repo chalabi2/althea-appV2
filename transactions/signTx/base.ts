@@ -12,7 +12,8 @@ import { signCosmosEIPTx, waitForCosmosTx } from "./cosmosEIP/signCosmosEIP";
  * @returns {PromiseWithError<string>} txHash of transaction or error
  */
 export async function signTransaction(
-  tx: Transaction
+  tx: Transaction,
+  wallet?: string
 ): PromiseWithError<string> {
   switch (tx.type) {
     case "EVM":
