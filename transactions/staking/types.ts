@@ -13,6 +13,7 @@ export enum StakingTxTypes {
 export type StakingTransactionParams = {
   chainId: number;
   ethAccount: string;
+  cosmos?: boolean;
 } & (
   | {
       txType: StakingTxTypes.DELEGATE | StakingTxTypes.UNDELEGATE;

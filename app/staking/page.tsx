@@ -176,6 +176,26 @@ export default function StakingPage() {
     validatorToRedelegate?: Validator | null,
     selectedValidators?: Validator[]
   ): Validation {
+    const { address } = useChain("althea");
+    const isCosmosWallet = !!address;
+
+    // If cosmos wallet is connected, validate using cosmos params
+    if (isCosmosWallet && address) {
+      const txParams = {
+        chainId: chainId,
+        ethAccount: address,
+        txType: txType,
+        validator: selection.validator,
+        amount: (convertToBigNumber(inputAmount, 18).data ?? "0").toString(),
+        nativeBalance: userStaking?.cantoBalance ?? "0",
+        cosmos: true,
+        validatorToRedelegate,
+        newValidatorAddress: validatorToRedelegate?.operator_address ?? "",
+      };
+      return transaction.validateTxParams(txParams);
+    }
+
+    // Otherwise use existing EVM validation
     if (signer) {
       const txParams = stakingTxParams(
         signer,
@@ -188,7 +208,7 @@ export default function StakingPage() {
         return transaction.validateTxParams(txParams);
       }
     }
-    return { error: true, reason: "signer not available" };
+    return { error: true, reason: "No wallet connected" };
   }
 
   // filers and search
